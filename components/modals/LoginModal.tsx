@@ -1,7 +1,7 @@
-import useLoginModal from "@/hooks/useLoginModal";
 import { FC, useCallback, useState } from "react";
 import Input from "../Input";
 import Modal from "../Modal";
+import useLoginModal from "@/hooks/useLoginModal";
 
 const LoginModal: FC = () => {
   const loginModal = useLoginModal();

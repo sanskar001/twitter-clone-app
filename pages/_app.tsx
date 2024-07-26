@@ -1,5 +1,4 @@
 import Layout from "@/components/layout/Layout";
-import LoginModal from "@/components/modals/LoginModal";
 import RegisterModal from "@/components/modals/RegisterModal";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
