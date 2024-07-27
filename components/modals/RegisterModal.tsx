@@ -2,9 +2,11 @@ import { FC, useCallback, useState } from "react";
 import Input from "../Input";
 import Modal from "../Modal";
 import useRegisterModal from "@/hooks/useRegisterModal";
+import useLoginModal from "@/hooks/useLoginModal";
 
 const RegisterModal: FC = () => {
   const registerModal = useRegisterModal();
+  const loginModal = useLoginModal();
 
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -25,6 +27,15 @@ const RegisterModal: FC = () => {
       setIsLoading(false);
     }
   }, [registerModal]);
+
+  const onToggle = useCallback(() => {
+    if (isLoading) {
+      return;
+    }
+
+    registerModal.onClose();
+    loginModal.onOpen();
+  }, [isLoading, registerModal, loginModal]);
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
@@ -55,6 +66,21 @@ const RegisterModal: FC = () => {
     </div>
   );
 
+  const footerContent = (
+    <div className="text-neutral-400 text-center mt-4">
+      <p>
+        Already have an account?
+        <span
+          onClick={onToggle}
+          className="text-white cursor-pointer hover:underline"
+        >
+          {" "}
+          Sign in
+        </span>
+      </p>
+    </div>
+  );
+
   return (
     <Modal
       disabled={isLoading}
@@ -64,6 +90,7 @@ const RegisterModal: FC = () => {
       onClose={registerModal.onClose}
       onSubmit={onSubmit}
       body={bodyContent}
+      footer={footerContent}
     />
   );
 };
