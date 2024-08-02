@@ -10,28 +10,28 @@ import { signOut } from "next-auth/react";
 
 interface SidebarProps {}
 
-const items = [
-  {
-    label: "Home",
-    href: "/",
-    icon: BsHouseFill,
-  },
-  {
-    label: "Notification",
-    href: "/notification",
-    icon: BsBellFill,
-    auth: true,
-  },
-  {
-    label: "Profile",
-    href: "/users/123",
-    icon: FaUser,
-    auth: true,
-  },
-];
-
 const Sidebar: FC<SidebarProps> = ({}) => {
   const { data: currentUser } = useCurrentUser();
+
+  const items = [
+    {
+      label: "Home",
+      href: "/",
+      icon: BsHouseFill,
+    },
+    {
+      label: "Notification",
+      href: "/notification",
+      icon: BsBellFill,
+      auth: true,
+    },
+    {
+      label: "Profile",
+      href: `/users/${currentUser?.id}`,
+      icon: FaUser,
+      auth: true,
+    },
+  ];
 
   return (
     <div className="col-span-1 h-full pr-4 md:pr-6">
