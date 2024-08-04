@@ -1,9 +1,10 @@
 import Form from "@/components/Form";
 import Header from "@/components/Header";
+import CommentFeed from "@/components/posts/CommentFeed";
 import PostItem from "@/components/posts/PostItem";
 import usePost from "@/hooks/usePost";
 import { useRouter } from "next/router";
-import { FC, useState } from "react";
+import { FC } from "react";
 import { ClipLoader } from "react-spinners";
 
 const PostView: FC = () => {
@@ -29,6 +30,7 @@ const PostView: FC = () => {
         isComment
         placeholder="Tweet your reply"
       />
+      <CommentFeed comments={fetchedPost?.comments} />
     </>
   );
 };
