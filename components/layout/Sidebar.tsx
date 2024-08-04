@@ -20,10 +20,11 @@ const Sidebar: FC<SidebarProps> = ({}) => {
       icon: BsHouseFill,
     },
     {
-      label: "Notification",
-      href: "/notification",
+      label: "Notifications",
+      href: "/notifications",
       icon: BsBellFill,
       auth: true,
+      alert: currentUser?.hasNotification,
     },
     {
       label: "Profile",
